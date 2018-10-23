@@ -1,0 +1,29 @@
+@import "ember-bootstrap/bootstrap";
+@import "movie-review-view.scss";
+@import url('https://fonts.googleapis.com/css?family=Bevan');
+
+body {
+	font-family: "Roboto", "Helvetica Neue", sans-serif;
+    font-size: 1.4rem;
+    font-size: 75%;
+    background-color: #fff;
+}
+
+@supports (column-count: 2) {	
+  .wrapper {
+    column-count: 2;
+    column-gap: 0;
+    padding-top: 56px;
+  }
+  section {
+    background-color: red;
+    text-align: center;
+    box-sizing: border-box;
+    width: 100%;
+    /*padding: 0.05em;*/
+  }
+  img {
+    width: 100%;
+    display: block;
+  }
+}

@@ -1,0 +1,79 @@
+<div class="content">
+    {{#parallax-header imageurl = model.imageurl}}
+        <div class="header-image" style = "background-image:url('{{model.imageurl}}'); height: 75vh">
+            <div class="back-button" {{action "goBack"}}>{{fa-icon "arrow-left"}}</div>
+        </div>
+        <div class="main-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-10">
+                        <div class="movie-details">
+                            <span style="color:red;font-weight:bold;">MOVIE</span> 2015
+                        </div>
+                        <h2>{{model.name}}</h2>
+                        <div class="movie-details">
+                            {{#each model.genre as |genre|}}
+                                <span>{{genre}} </span> 
+                            {{/each}}
+                            - {{model.runningTime}} - {{model.year}}</div>
+                    </div>
+                    <div class="col-2">
+                        <div class="rating">8.2</div>
+                    </div>
+                </div>
+            </div>
+            <h3 text-center>Synopsis</h3>
+            <p>{{model.synopsis}}</p>
+            <h3 text-center>Cast & Crew</h3>
+            <div style="position: relative; white-space: nowrap; height:150px">
+                <div class="scroll-content">
+                    {{#each model.castAndCrew as |cast|}}
+                        <div class="col-4" style="display: inline-block;">
+                            <div style="text-align: center">
+                                <img style="display: block;margin: 0 auto; border-radius: 50%;" src="https://placehold.it/100x100">
+                                <p>{{cast.name}}</p>
+                            </div>
+                        </div>
+                    {{/each}}
+                </div>
+            </div>      
+            <h3 text-center>Review</h3>
+            {{#each model.reviews as |review|}}
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <h5>{{review.name}}</h5>
+                            <p>{{review.message}}</p>
+                        </div>
+                    <div class="row star-rating">
+                    <div class="col-12">
+                        {{#each (range review.rating) as |rating|}}
+                            {{fa-icon "star"}}
+                        {{/each}}
+                    </div>
+                    </div>
+                    </div>
+                    <hr style="width: 60%;border: 1px dotted white;">
+                </div>
+            {{/each}}
+        </div>
+    {{/parallax-header}}
+    {{#bs-modal open=showModal onSubmit=(action "submit") onHidden=(action (mut showModal) false) as |modal|}}
+        {{#modal.header}}
+            <h4 class="modal-title">{{model.name}}</h4>
+        {{/modal.header}}
+        {{#modal.body}}
+            {{textarea class="form-control" value=newReview.message rows="4"}}
+            {{star-rating rating=newReview.rating}}
+        {{/modal.body}}
+        {{#modal.footer}}
+            {{#bs-button onClick=(action modal.close)}}Cancel{{/bs-button}}
+            {{#bs-button type="success" onClick=(action modal.submit)}}Save{{/bs-button}}
+        {{/modal.footer}}
+    {{/bs-modal}}
+    {{#bs-button onClick=(action (mut showModal) true)}}
+        <div class="review-button">
+            {{fa-icon "plus"}}
+        </div>
+    {{/bs-button}}
+</div>

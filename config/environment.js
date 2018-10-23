@@ -5,7 +5,7 @@ module.exports = function(environment) {
   let ENV = {
     modulePrefix: 'movie-review-app',
     environment,
-    rootURL: '/',
+    rootURL: '',
     locationType: 'auto',
     EmberENV: {
       FEATURES: {

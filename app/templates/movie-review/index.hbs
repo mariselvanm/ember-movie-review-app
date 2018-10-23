@@ -1,0 +1,12 @@
+<nav class="navbar fixed-top navbar-dark bg-dark">
+  	<div class="navbar-header">
+    	{{#link-to "movie-review.index" class="navbar-brand"}}ZoomRx Movie Review App{{/link-to}}
+  	</div>
+</nav>
+<div class="wrapper">
+	{{#each model as |movie|}}
+		<section {{action "viewMovie" movie._id}}>
+			<img src="{{movie.imageurl}}">
+		</section>
+	{{/each}}
+</div>

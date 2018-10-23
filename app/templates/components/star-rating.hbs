@@ -1,0 +1,7 @@
+<div class="star-rating-input">
+	{{fa-icon (if (lt rating  1) "star-o" "star") click = (action "setRating" 1)}}
+	{{fa-icon (if (lt rating  2) "star-o" "star") click = (action "setRating" 2)}}
+	{{fa-icon (if (lt rating  3) "star-o" "star") click = (action "setRating" 3)}}
+	{{fa-icon (if (lt rating  4) "star-o" "star") click = (action "setRating" 4)}}
+	{{fa-icon (if (lt rating  5) "star-o" "star") click = (action "setRating" 5)}}
+</div>
